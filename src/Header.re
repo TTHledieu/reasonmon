@@ -12,17 +12,17 @@ module Styles = {
   let nameContainer = style([
     display(`flex),
     flex(6),
+    justifyContent(`center),
   ]);
   let name = style([
     fontSize(px(20)),
     color(white),
-    display(`flex),
-    paddingLeft(px(20)),
   ]);
   
   let navContainer = style([
     display(`flex),
     flex(4),
+    justifyContent(`center),
   ]);
   let nav = style([
     fontSize(px(17)),
@@ -31,7 +31,6 @@ module Styles = {
     display(`flex),
     paddingRight(px(10)),
   ]);
-
 };
 
 let component = ReasonReact.statelessComponent("Header");
@@ -50,7 +49,7 @@ let make = (~handleClick, _children) => {
             <h3 className=name>(ReasonReact.string("ReasonMon"))</h3>
           </div>
           <div className=navContainer>
-            <a href="home" onClick=self.handle(click("home")) className=nav>(ReasonReact.string("Home"))</a>
+            <a href="home" onClick=self.handle(click("/")) className=nav>(ReasonReact.string("Home"))</a>
             <a href="about" onClick=self.handle(click("about")) className=nav>(ReasonReact.string("About"))</a>
           </div>
         </div>
