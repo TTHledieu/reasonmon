@@ -54,6 +54,19 @@ let handleClick = (tuple, _self) => {
   };
 };
 
+let renderBody = (state) => {
+  switch (state.route) {
+    | Home => {
+      switch(state.fetching) {
+      | Loading => <h1>(ReasonReact.string("Loading..."))</h1>
+      | Error => <h1>(ReasonReact.string("An error happened... Check your network !"))</h1>
+      | Loaded => <Home pokemons=state.pokemons />
+      }
+    }
+    | About => <div>(ReasonReact.string("About Page is working"))</div>
+  };
+}
+
 let reducer = (action, state) => 
   switch action {
   | ChangeRoute(route) => ReasonReact.Update({...state, route: route })
@@ -74,7 +87,7 @@ let reducer = (action, state) =>
       )
     ),
   )
-  | PokemonsFetched(pokemons) => ReasonReact.Update({...state, pokemons })
+  | PokemonsFetched(pokemons) => ReasonReact.Update({...state, pokemons, fetching: Loaded })
   | PokemonsFetchFailure => ReasonReact.Update({...state, fetching: Error})
   };
 
@@ -94,11 +107,7 @@ didMount: self => {
 },
 reducer,
 render: self => {
-  let body =
-    switch (self.state.route) {
-    | Home => <Home pokemons=self.state.pokemons />
-    | About => <div>(ReasonReact.string("About Page is working"))</div>
-  };
+  let body = renderBody(self.state);
   <div>
     <Header handleClick=handleClick/>
     body
