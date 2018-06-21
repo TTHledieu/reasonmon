@@ -3,27 +3,50 @@ module Styles = {
 
   let container = style([
     display(`flex),
-    flex(1),
+    flexDirection(`column),
     justifyContent(`center),
+    backgroundColor(hex("F5F6F7")),
   ]);
   let title = style([
     fontSize(rem(1.5)),
     color(red),
     marginBottom(px(10))
   ]);
+  let top = style([
+    display(`flex),
+    flex(1),
+  ]);
+  let body = style([
+    display(`flex),
+    flex(9),
+  ]);
+};
+
+type pokemon = {
+  name: string,
+  url: string,
 };
 
 let component = ReasonReact.statelessComponent("Home");
 
 let reducer = (_action, _state) => ()
 
-let make = (~pokemons, _children) => {
+let make = (~pokemons: array(pokemon), _children) => {
 ...component,
 render: _self => {
-  let body = (() => Js.log(pokemons))();
+  let test = (() => {
+    let pokemon = pokemons[0];
+    Js.log(pokemon.name);
+    Array.map(pokemon => Js.log(pokemon.name), pokemons);
+  })();
   Styles.(
       <div className=container>
-        <h2 className=title> (ReasonReact.string("Home")) </h2>
+        <div className=top>
+        (ReasonReact.string("Home"))
+        </div>
+        <div className=body>
+        (ReasonReact.string("Home"))
+        </div>
       </div>
     )
   }

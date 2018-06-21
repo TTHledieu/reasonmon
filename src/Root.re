@@ -8,11 +8,6 @@ open Css;
 
 let getPokemons = "https://pokeapi.co/api/v2/pokemon/";
 
-type pokemon = {
-  name: string,
-  url: string,
-};
-
 type route = 
   | Home
   | About;
@@ -25,22 +20,22 @@ type fetchState =
 type action =
   | ChangeRoute(route)
   | PokemonsFetch
-  | PokemonsFetched(array(pokemon))
+  | PokemonsFetched(array(Home.pokemon))
   | PokemonsFetchFailure;
 
 type state = {
   route: route,
   fetching: fetchState,
-  pokemons: array(pokemon),
+  pokemons: array(Home.pokemon),
 };
 
 module Decode = {
   open Json.Decode;
-  let pokemon = json : pokemon => {
-    url: json |> field("url", string),
-    name: json |> field("name", string)
-  };
-  let pkmn = json : array(pokemon) =>
+  let pokemon = json : Home.pokemon => {
+      url: json |> field("url", string),
+      name: json |> field("name", string)
+    };
+  let pkmn = json : array(Home.pokemon) =>
     json |> field("results", array(pokemon))
 };
 
@@ -54,7 +49,7 @@ let handleClick = (tuple, _self) => {
   };
 };
 
-let renderBody = (state) => {
+let renderBody = (state: state) => {
   switch (state.route) {
     | Home => {
       switch(state.fetching) {
