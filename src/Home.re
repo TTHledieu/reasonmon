@@ -19,6 +19,22 @@ module Styles = {
   let body = style([
     display(`flex),
     flex(9),
+    flexDirection(`column),
+    alignItems(`center),
+  ]);
+  let pkmnItem = style([
+    boxSizing(`borderBox),
+    display(`inlineBlock),
+    width(px(200)),
+    margin(px(10)),
+    borderColor(hex("048BA8")),
+    color(hex("048BA8")),
+    borderWidth(px(5)),
+    textAlign(`center),
+    borderStyle(`dashed),
+  ]);
+  let pkmnName = style([
+
   ]);
 };
 
@@ -27,17 +43,28 @@ type pokemon = {
   url: string,
 };
 
+let renderItem = (pokemon: pokemon) => {
+  let capitalisedName = String.capitalize(pokemon.name);
+  <div key={pokemon.name} className=Styles.pkmnItem>
+    <h3 className=Styles.pkmnName>
+      (ReasonReact.string(capitalisedName))
+    </h3>
+  </div>
+};
+
 let component = ReasonReact.statelessComponent("Home");
 
 let reducer = (_action, _state) => ()
 
 let make = (~pokemons: array(pokemon), _children) => {
+
 ...component,
 render: _self => {
-  let test = (() => {
+  (() => {
     let pokemon = pokemons[0];
     Js.log(pokemon.name);
-    Array.map(pokemon => Js.log(pokemon.name), pokemons);
+    Array.map(pokemon => Js.log(pokemon), pokemons);
+    ()
   })();
   Styles.(
       <div className=container>
@@ -45,7 +72,12 @@ render: _self => {
         (ReasonReact.string("Home"))
         </div>
         <div className=body>
-        (ReasonReact.string("Home"))
+          (
+            Array.map(pokemon =>
+              renderItem(pokemon),
+              pokemons)
+            |> ReasonReact.array
+          )
         </div>
       </div>
     )

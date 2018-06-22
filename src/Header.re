@@ -3,7 +3,7 @@ module Styles = {
 
   let container = style([
     height(px(70)),
-    backgroundColor(hex("D34E37")),
+    backgroundColor(hex("A4036F")),
     display(`flex),
     flexDirection(`row),
     alignItems(`center),
