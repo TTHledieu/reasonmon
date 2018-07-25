@@ -2,14 +2,14 @@ module Styles = {
   open Css;
 
   let hoverAnimation = keyframes([
-    (0, [borderStyle(`dashed), width(px(300))]),
-    (100, [borderStyle(`solid), width(px(310))]),
+    (0, [borderStyle(`dashed), width(px(290))]),
+    (100, [borderStyle(`solid), width(px(250))]),
   ]);
   let container = style([
     display(`flex),
     flexDirection(`column),
     justifyContent(`center),
-    backgroundColor(hex("F5F6F7")),
+    backgroundColor(hex("F5F6F5")),
   ]);
   let title = style([
     fontSize(rem(1.5)),
