@@ -1,6 +1,10 @@
 module Styles = {
   open Css;
 
+  let hoverAnimation = keyframes([
+    (0, [borderStyle(`dashed), width(px(200))]),
+    (100, [borderStyle(`solid), width(px(250))]),
+  ]);
   let container = style([
     display(`flex),
     flexDirection(`column),
@@ -32,6 +36,12 @@ module Styles = {
     borderWidth(px(5)),
     textAlign(`center),
     borderStyle(`dashed),
+    selector(":hover", [
+      borderStyle(`solid),
+      width(px(250)),
+      animationName(hoverAnimation),
+      animationDuration(200),
+    ]),
   ]);
   let pkmnName = style([
 
@@ -57,15 +67,8 @@ let component = ReasonReact.statelessComponent("Home");
 let reducer = (_action, _state) => ()
 
 let make = (~pokemons: array(pokemon), _children) => {
-
 ...component,
 render: _self => {
-  (() => {
-    let pokemon = pokemons[0];
-    Js.log(pokemon.name);
-    Array.map(pokemon => Js.log(pokemon), pokemons);
-    ()
-  })();
   Styles.(
       <div className=container>
         <div className=top>
@@ -73,9 +76,7 @@ render: _self => {
         </div>
         <div className=body>
           (
-            Array.map(pokemon =>
-              renderItem(pokemon),
-              pokemons)
+            Array.map(pokemon => renderItem(pokemon), pokemons)
             |> ReasonReact.array
           )
         </div>
