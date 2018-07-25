@@ -2,8 +2,8 @@ module Styles = {
   open Css;
 
   let hoverAnimation = keyframes([
-    (0, [borderStyle(`dashed), width(px(290))]),
-    (100, [borderStyle(`solid), width(px(250))]),
+    (0, [borderStyle(`dashed), width(px(300))]),
+    (100, [borderStyle(`solid), width(px(310))]),
   ]);
   let container = style([
     display(`flex),
