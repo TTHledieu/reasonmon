@@ -3,7 +3,7 @@ module Styles = {
 
   let hoverAnimation = keyframes([
     (0, [borderStyle(`dashed), width(px(300))]),
-    (100, [borderStyle(`solid), width(px(310))]),
+    (100, [borderStyle(`solid), width(px(320))]),
   ]);
   let container = style([
     display(`flex),
