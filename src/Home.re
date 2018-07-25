@@ -9,7 +9,7 @@ module Styles = {
     display(`flex),
     flexDirection(`column),
     justifyContent(`center),
-    backgroundColor(hex("F5F6F7")),
+    backgroundColor(hex("F5F6F5")),
   ]);
   let title = style([
     fontSize(rem(1.5)),
