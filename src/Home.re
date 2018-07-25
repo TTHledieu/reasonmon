@@ -2,7 +2,11 @@ module Styles = {
   open Css;
 
   let hoverAnimation = keyframes([
+<<<<<<< HEAD
     (0, [borderStyle(`dashed), width(px(250))]),
+=======
+    (0, [borderStyle(`dashed), width(px(260))]),
+>>>>>>> 196bc157f0d5003f5f2dc9484bf3275e85cfcec8
     (100, [borderStyle(`solid), width(px(250))]),
   ]);
   let container = style([
