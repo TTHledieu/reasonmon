@@ -15,7 +15,7 @@ module Styles = {
     justifyContent(`center),
   ]);
   let name = style([
-    fontSize(px(30)),
+    fontSize(px(35)),
     color(white),
   ]);
   
