@@ -9,7 +9,11 @@
 
 .App-header {
   background-color: #222;
+<<<<<<< HEAD
   height: 155px;
+=======
+  height: 160px;
+>>>>>>> 4913b78e89d3fce8539c3ce0a854fb6590124ace
   padding: 20px;
   color: white;
 }
