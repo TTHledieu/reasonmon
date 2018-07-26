@@ -2,7 +2,7 @@ module Styles = {
   open Css;
 
   let container = style([
-    height(px(150)),
+    height(px(100)),
     backgroundColor(hex("A4036F")),
     display(`flex),
     flexDirection(`row),
@@ -15,7 +15,7 @@ module Styles = {
     justifyContent(`center),
   ]);
   let name = style([
-    fontSize(px(40)),
+    fontSize(px(50)),
     color(white),
   ]);
   
