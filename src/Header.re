@@ -2,7 +2,7 @@ module Styles = {
   open Css;
 
   let container = style([
-    height(px(150)),
+    height(px(250)),
     backgroundColor(hex("A4036F")),
     display(`flex),
     flexDirection(`row),
